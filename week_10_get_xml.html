@@ -1,0 +1,27 @@
+<html>
+<head>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            $("#submit").click(function(){
+                $.ajax( {
+                url: "http://localhost:8080/getbook/Everyday Italian",
+                method: "get",
+                dataType: "text" // force the returned result as a string for printing
+            })
+                 .done( function(msg) {
+                     $("#div1").text(msg);
+                 });
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button id="submit">Get Book Title</button>
+<div id="div1"></div>
+
+</body>
+</html>

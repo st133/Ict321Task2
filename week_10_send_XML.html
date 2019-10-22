@@ -1,0 +1,38 @@
+<html>
+<head>
+	<meta http-equiv="Access-Control-Allow-Origin" content="*"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script>
+        var myxml = "<bookstore><book>" +
+            "<title>Everyday Italian</title>" +
+            "<author>Giada De Laurentiis</author>" +
+            "<year>2005</year><price>30.00</price>" +
+            "</book><book>" +
+            "<title>Harry Potter</title>" +
+            "<author>J K. Rowling</author>" +
+            "<year>2005</year><price>29.99</price>" +
+            "</book><book>" +
+            "<title>Learning XML</title>" +
+            "<author>Erik T. Ray</author>" +
+            "<year>2003</year><price>39.95</price>" +
+            "</book></bookstore>";
+        $(document).ready(function(){
+            $("#submit").click(function(){
+                $.ajax( {
+                url: "http://localhost:8080/books?booksXML=" + myxml,
+                method: "get",
+                dataType: "text" // force the returned result as a string for printing
+            })
+                 .done( function(msg) {
+                 });
+
+            });
+        });
+    </script>
+</head>
+<body>
+
+<button id="submit">Send Book List</button>
+
+</body>
+</html>
